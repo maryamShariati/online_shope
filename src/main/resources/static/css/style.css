@@ -1,0 +1,148 @@
+.card-position {
+    width: 50rem;
+    height: 50rem;
+    margin: 20%;
+}
+
+.navbar-position{
+    margin-left: 20rem;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+}
+.navbar-item{
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+}
+
+.my-nav-item{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.article-home{
+    width: 95rem;
+    height: 45rem;
+}
+.img_size{
+    width:95rem;
+    height: 46rem;
+    margin: 0;
+}
+.logo_size{
+    width:100px;
+    height:100px;
+    margin-top: 5rem;
+    border-radius: 100%;
+}
+.size_image{
+    margin:0;
+    float: top;
+    width: 100%;
+    height: 30rem;
+
+}
+.p-image{
+    margin: 0 ;
+    width: 100%;
+    height:100%;
+}
+.article_card{
+    width: 100%;
+    height: 110rem;
+}
+
+.card-position{
+    margin: 0;
+    float: bottom;
+    width: 100%;
+    height: 80rem;
+}
+.card-category-p{
+    float: left;
+    margin:0 40px 40px 40px;
+
+}
+.card_img_size{
+    width: 18rem;
+    height:15rem;
+}
+.card-position-c{
+    margin: 10px;
+    float: bottom;
+    width: 80%;
+    height: 80rem;
+}
+
+.back-home{
+    border: #198754 solid 1px;
+    width: 10rem;
+    height: 100%;
+    padding: 5px 15px;
+}
+
+.card_size{
+    margin: 0;
+    float: bottom;
+    width: 100%;
+    height: 100%;
+
+}
+.p-card-position{
+    float: left;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.f_image{
+    width: 100%;
+    height:100%;
+}
+.f_title{
+    float: left;
+    width: 40%;
+    height: 100rem;
+    margin-left: 70px;
+    margin-top: 0;
+}
+#customer-form-img{
+    float: right;
+    width: 50%;
+    height: 60rem;
+}
+.input-form-position{
+    width: 80%;
+    margin: 20px;
+}
+.customer-form-lable{
+
+    font-style: oblique;
+    font-weight:bold;
+    font-size: large;
+    color: #198754;
+}
+.input-box-size{
+    border: #198754 solid 1px}
+
+.form-p-position{
+    font-style: oblique;
+    font-weight: bold;
+    font-size: x-large;
+    margin: 30px 20px 20px 80px;
+
+}
+.button-position{
+    margin-left: 12rem;
+    margin-top: 40px;
+}
+#form-product-position{
+    font-style: oblique;
+    font-weight: bold;
+    font-size: x-large;
+    margin: 30px 20px 20px 40px;
+}
+.update-form-img{
+    float: right;
+    width: 50%;
+    height: 40rem;
+}
