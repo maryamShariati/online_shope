@@ -5,48 +5,57 @@ import com.demis.online_shop.model.Category;
 import com.demis.online_shop.model.Product;
 import com.demis.online_shop.model.Seller;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 
-public record CreatProductRequest(
+@Setter
+@Getter
+@NoArgsConstructor
+public class CreatProductRequest {
         @NotNull
-        String nationalCode,
-         String firstName,
-         String lastName,
-        String storeName,
+        private String nationalCode;
+        private String firstName;
+        private String lastName;
+        private String storeName;
         @NotNull
-         String name,
+        private String name;
         @NotNull
-        int quantity,
-        String color,
-        String size,
+        private int quantity;
+        private String color;
+        private String size;
+        private LocalDateTime creatOn;
         @NotNull
-        LocalDateTime creatOn,
+        private BigDecimal price;
         @NotNull
-         BigDecimal price,
-        @NotNull
-         String category) {
+        private String category;
 
-        public static Product productFromDto(CreatProductRequest productRequest){
-                Product product=new Product();
-                Category category1=new Category();
-                product.setName(productRequest.name());
-                product.setQuantity(productRequest.quantity());
-                product.setColor(productRequest.color());
-                product.setSize(productRequest.size());
-                product.setCreateOn(productRequest.creatOn());
-                product.setPrice(productRequest.price());
-                category1.setName(productRequest.category);
+
+        public Seller sellerFromDto() {
+                Seller seller = new Seller();
+                seller.setNationalCode(nationalCode);
+                seller.setFirstName(firstName);
+                seller.setLastName(lastName);
+                seller.setStoreName(storeName);
+                return seller;
+        }
+        public Product productFromDto() {
+                Product product = new Product();
+                Category category1 = new Category();
+                product.setName(name);
+                product.setQuantity(quantity);
+                product.setColor(color);
+                product.setSize(size);
+                product.setCreateOn(creatOn);
+                product.setPrice(price);
+                category1.setName(category);
                 product.setCategory(category1);
                 return product;
         }
-        public static Seller sellerFromDto(CreatProductRequest creatProductRequest){
-                Seller seller=new Seller();
-                seller.setNationalCode(creatProductRequest.nationalCode());
-                seller.setFirstName(creatProductRequest.firstName());
-                seller.setLastName(creatProductRequest.lastName());
-                seller.setStoreName(creatProductRequest.storeName());
-                return seller;
-        }
+
+
 }

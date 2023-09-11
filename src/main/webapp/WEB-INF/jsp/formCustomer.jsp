@@ -1,11 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <title>View Items</title>
+    <meta charset="ISO-8859-1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="${pageContext.request.contextPath}/static/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="${pageContext.request.contextPath}/static/css/style.css" rel="stylesheet"/>
-
 </head>
 <body>
 <nav class="navbar bg-body-tertiary" >
@@ -23,55 +27,55 @@
     <img src="https://cdn.w600.comps.canstockphoto.com/online-shopping-vector-sale-banner-eps-vector_csp86286043.jpg" class="img-fluid f_image" >
 </div>
 <div class="f_title">
-    <form action="${pageContext.request.contextPath}/customer/creatCustomer" method="post">
+    <form:form  action="/customer/creatCustomer" method="post" modelAttribute="customer">
         <P class="form-p-position">please enter your information :</P>
         <div class="input-form-position">
-            <label for="nationalCode" class="form-label customer-form-lable"> NationalCode :</label>
-            <input type="text"  name="nationalCode" placeholder="nationalCod most be 10 character" id="nationalCode" class="form-control input-box-size">
+            <form:label path="nationalCode" class="form-label customer-form-lable"> NationalCode :</form:label>
+            <form:input type="text"  path="nationalCode" placeholder="nationalCod most be 10 character"  class="form-control input-box-size"/>
         </div>
         <div class="input-form-position">
-            <label for="firstName" class="form-label customer-form-lable"> FirstName :</label>
-            <input type="text" name="firstName" placeholder="required" id="firstName" class="form-control input-box-size">
+            <form:label path="firstName" class="form-label customer-form-lable"> FirstName :</form:label>
+            <form:input type="text" path="firstName" placeholder="required" class="form-control input-box-size"/>
         </div>
         <div class="input-form-position">
-            <label for="lastName" class="form-label customer-form-lable"> LastName :</label>
-            <input type="text" name="lastName" placeholder="required" id="lastName" class="form-control input-box-size">
+            <form:label path="lastName" class="form-label customer-form-lable"> LastName :</form:label>
+            <form:input type="text" path="lastName" placeholder="required"  class="form-control input-box-size"/>
         </div>
         <P class="form-p-position">please enter your address :</P>
         <div class="input-form-position">
-            <label for="country" class="form-label customer-form-lable"> Country :</label>
-            <input type="text" name="country" id="country" class="form-control input-box-size">
+            <form:label path="country" class="form-label customer-form-lable"> Country :</form:label>
+            <form:input type="text" path="country" class="form-control input-box-size"/>
         </div>
         <div class="input-form-position">
-            <label for="city" class="form-label customer-form-lable"> City :</label>
-            <input type="text" name="city" placeholder="required" id="city" class="form-control input-box-size">
+            <form:label path="city" class="form-label customer-form-lable"> City :</form:label>
+            <form:input type="text" path="city" placeholder="required"  class="form-control input-box-size"/>
         </div>
         <div class="input-form-position">
-            <label for="street" class="form-label customer-form-lable"> Street :</label>
-            <input type="text"  name="street" placeholder="required" id="street" class="form-control input-box-size">
+            <form:label path="street" class="form-label customer-form-lable"> Street :</form:label>
+            <form:input type="text"  path="street" placeholder="required"  class="form-control input-box-size"/>
         </div>
         <div class="input-form-position">
-            <label for="alley" class="form-label customer-form-lable"> Alley :</label>
-            <input type="text"   name="alley" id="alley" class="form-control input-box-size">
+            <form:label path="alley" class="form-label customer-form-lable"> Alley :</form:label>
+            <form:input type="text"   path="alley" class="form-control input-box-size"/>
         </div>
         <div class="input-form-position">
-            <label for="plaque" class="form-label customer-form-lable"> Plaque :</label>
-            <input type="text"  name="plaque" placeholder="required" id="plaque" class="form-control input-box-size">
+            <form:label path="plaque" class="form-label customer-form-lable"> Plaque :</form:label>
+            <form:input type="text"  path="plaque" placeholder="required" class="form-control input-box-size"/>
         </div>
         <div class="input-form-position">
-            <label for="postalCode" class="form-label customer-form-lable"> PostalCode :</label>
-            <input type="text" name="postalCode" placeholder="required" id="postalCode" class="form-control input-box-size">
+            <form:label path="postalCode" class="form-label customer-form-lable"> PostalCode :</form:label>
+            <form:input type="text" path="postalCode" placeholder="required"  class="form-control input-box-size"/>
         </div>
-         <div class="input-form-position">
-            <label for="email" class="form-label customer-form-lable"> Email :</label>
-            <input type="text" name="email" id="email" class="form-control input-box-size">
+        <div class="input-form-position">
+            <form:label path="email" class="form-label customer-form-lable"> Email :</form:label>
+            <form:input type="text" path="email"  class="form-control input-box-size"/>
         </div>
-         <div class="input-form-position">
-            <label for="phoneNumber" class="form-label customer-form-lable"> PhoneNumber :</label>
-            <input type="text"  name="phoneNumber" placeholder="required" id="phoneNumber" class="form-control input-box-size">
+        <div class="input-form-position">
+            <form:label path="phoneNumber" class="form-label customer-form-lable"> PhoneNumber :</form:label>
+            <form:input type="text"  path="phoneNumber" placeholder="required"  class="form-control input-box-size"/>
         </div>
-        <button type="submit" id="register" class="btn btn-outline-success button-position">Submit information</button>
-    </form>
+        <form:button type="submit"  class="btn btn-outline-success button-position">Submit information</form:button>
+    </form:form>
 </div>
 <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>

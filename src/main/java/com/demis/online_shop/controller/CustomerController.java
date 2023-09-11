@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
@@ -18,21 +19,20 @@ import java.util.List;
 public class CustomerController {
     private final CustomerService customerService;
     @GetMapping("/showCustomerForm")
-    public ModelAndView showProductForm(ModelAndView model) {
-        model.setViewName("formCustomer");
-        return model;
+    public String showProductForm(Model model) {
+        var creatCustomer = new CreatCustomerRequest();
+        model.addAttribute("customer",creatCustomer);
+        return "formCustomer";
     }
     @PostMapping("/creatCustomer")
-    public ModelAndView creatCustomer(@Valid CreatCustomerRequest creatCustomerRequest, ModelAndView model) {
-        var customer=CreatCustomerRequest.customerFromDto(creatCustomerRequest);
-        var address=CreatCustomerRequest.addressFromDto(creatCustomerRequest);
-        var customer1 = customerService.creatCustomer(customer, address);
+    public String creatCustomer(@ModelAttribute("customer") CreatCustomerRequest creatCustomerRequest) {
+        var customer=creatCustomerRequest.customerFromDto();
+        var address=creatCustomerRequest.addressFromDto();
+        var customer1 = customerService.creatCustomer(customer,address);
         if (customer1 != null) {
-            model.setViewName("okResponse");
-        } else {
-            model.setViewName("notOkResponse");
+            return "okResponse";
         }
-        return model;
+        return "notOkResponse";
     }
     @GetMapping("/getCustomer")
     List<Customer>getAll(

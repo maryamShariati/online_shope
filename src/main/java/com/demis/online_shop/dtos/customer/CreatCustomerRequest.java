@@ -4,44 +4,48 @@ package com.demis.online_shop.dtos.customer;
 import com.demis.online_shop.model.Address;
 import com.demis.online_shop.model.Customer;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public record CreatCustomerRequest(
-        @NotNull
-        String nationalCode,
-        @NotNull
-        String firstName,
-        @NotNull
-        String lastName,
-        String country,
-        String city,
-        String street,
-        String alley,
-        String plaque,
-        @NotNull
-        String postalCode,
-        String email,
-        @NotNull
-        String phoneNumber
-) {
-    public static Customer customerFromDto(CreatCustomerRequest creatCustomer) {
+@Setter
+@Getter
+@NoArgsConstructor
+public class CreatCustomerRequest{
+    @NotNull
+    private String nationalCode;
+    @NotNull
+    private String firstName;
+    @NotNull
+    private String lastName;
+    private String country;
+    private String city;
+    private String street;
+    private String alley;
+    private String plaque;
+    @NotNull
+    private String postalCode;
+    private String email;
+    @NotNull
+    private String phoneNumber;
+
+    public  Customer customerFromDto() {
         Customer people = new Customer();
-        people.setNationalCode(creatCustomer.nationalCode());
-        people.setFirstName(creatCustomer.firstName());
-        people.setLastName(creatCustomer.lastName());
+        people.setNationalCode(nationalCode);
+        people.setFirstName(firstName);
+        people.setLastName(lastName);
         return people;
     }
-
-    public static Address addressFromDto(CreatCustomerRequest creatCustomer){
+    public Address addressFromDto(){
         Address address = new Address();
-        address.setCountry(creatCustomer.country);
-        address.setCity(creatCustomer.city);
-        address.setStreet(creatCustomer.street);
-        address.setAlley(creatCustomer.alley);
-        address.setPlaque(creatCustomer.plaque);
-        address.setPostalCode(creatCustomer.postalCode);
-        address.setEmail(creatCustomer.email);
-        address.setPhoneNumber(creatCustomer.phoneNumber);
+        address.setCountry(country);
+        address.setCity(city);
+        address.setStreet(street);
+        address.setAlley(alley);
+        address.setPlaque(plaque);
+        address.setPostalCode(postalCode);
+        address.setEmail(email);
+        address.setPhoneNumber(phoneNumber);
         return address;
     }
-
 }

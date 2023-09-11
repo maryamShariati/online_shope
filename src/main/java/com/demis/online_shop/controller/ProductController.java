@@ -10,6 +10,7 @@ import com.demis.online_shop.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.math.BigDecimal;
@@ -23,26 +24,26 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/showProductForm")
-    public ModelAndView showProductForm(ModelAndView model) {
-        model.setViewName("createProductForm");
-        return model;
-    }
-    @GetMapping("/showProductCard")
-    public ModelAndView showProduct(ModelAndView model) {
-        model.setViewName("productCard");
-        return model;
+    public String showProductForm(Model model) {
+        var creatProduct=new CreatProductRequest();
+        model.addAttribute("creatProduct",creatProduct);
+        return "createProductForm";
     }
 
     @PostMapping("/creatProduct")
-    public ModelAndView creatProduct(@Valid CreatProductRequest creatProduct, ModelAndView model) {
-        var seller = CreatProductRequest.sellerFromDto(creatProduct);
-        var product = CreatProductRequest.productFromDto(creatProduct);
+    public String creatProduct( @ModelAttribute("creatProduct") CreatProductRequest creatProduct) {
+        var seller = creatProduct.sellerFromDto();
+        var product = creatProduct.productFromDto();
         var product1 = productService.creatProduct(seller, product);
         if (product1 != null) {
-            model.setViewName("okResponse");
-        } else {
-            model.setViewName("notOkResponse");
+            return "okResponse";
         }
+        return "notOkResponse";
+    }
+
+    @GetMapping("/showProductCard")
+    public ModelAndView showProduct(ModelAndView model) {
+        model.setViewName("productCard");
         return model;
     }
 
